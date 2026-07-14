@@ -40,4 +40,16 @@ npm run preview
 
 ## Deploy
 
-This is a static site — deploy the `frontend/dist` output (after `npm run build`) to Vercel, Netlify, or GitHub Pages. No environment variables or backend services required.
+This is a static site. It deploys to GitHub Pages automatically on every push to `main` via `.github/workflows/deploy.yml`, which builds `frontend` with Vite and publishes `frontend/dist`.
+
+One-time setup: in the repo, go to **Settings > Pages > Build and deployment** and set **Source** to **GitHub Actions**. After that, pushing to `main` builds and publishes the site with no manual steps.
+
+To deploy elsewhere (Vercel, Netlify), just point the build command at `frontend` (`npm install && npm run build`, output directory `frontend/dist`). No environment variables or backend services required.
+
+To preview locally after building:
+
+```bash
+cd frontend
+npm run build
+npm run preview
+```
